@@ -147,7 +147,7 @@ public class UserDao extends BaseDao {
             + "  username=?, password=?, email=?, phone=?, admin=?, disabled=?, homeUrl=?, receiveAlarmEmails=?, "
             + "  receiveOwnAuditEvents=? " + "where id=?";
 
-    void updateUser(User user) {
+    void updateUser(User user) { //function handling null values
     ejt.update(
         USER_UPDATE,
         new Object[] {
