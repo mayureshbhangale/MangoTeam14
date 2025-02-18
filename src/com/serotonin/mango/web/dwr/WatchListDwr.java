@@ -18,6 +18,7 @@
  */
 package com.serotonin.mango.web.dwr;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -62,8 +63,13 @@ public class WatchListDwr extends BaseDwr {
         User user = Common.getUser();
         List<DataPointVO> points = dataPointDao.getDataPoints(DataPointExtendedNameComparator.instance, false);
         for (DataPointVO point : points) {
-            if (Permissions.hasDataPointReadPermission(user, point))
-                ph.addDataPoint(point.getId(), point.getPointFolderId(), point.getExtendedName());
+            if (Permissions.hasDataPointReadPermission(user, point)){
+                System.out.println(point);
+            // System.out.println(point);
+            // DecimalFormat format = new DecimalFormat("#.00");
+            // point.updateLastValue(new PointValueTime(Double.parseDouble(format.format(point.lastValue().getDoubleValue())), point.lastValue().getTime()));
+            ph.addDataPoint(point.getId(), point.getPointFolderId(), point.getExtendedName());
+            }
         }
 
         ph.parseEmptyFolders();
@@ -104,6 +110,8 @@ public class WatchListDwr extends BaseDwr {
         Map<String, Object> model = new HashMap<String, Object>();
         for (DataPointVO point : watchList.getPointList()) {
             // Create the watch list state.
+            // DecimalFormat format = new DecimalFormat("#.00");
+            // point.updateLastValue(new PointValueTime(Double.parseDouble(format.format(point.lastValue().getDoubleValue())), point.lastValue().getTime()));
             state = createWatchListState(request, point, rtm, model, user);
             states.add(state);
         }
@@ -178,6 +186,11 @@ public class WatchListDwr extends BaseDwr {
         user.setSelectedWatchList(watchListId);
 
         Map<String, Object> data = getWatchListData(user, watchList);
+        // for (int i = 0; i < watchList.getPointList().size(); i++) {
+        //     // Create the watch list state.
+        //     DecimalFormat format = new DecimalFormat("#.00");
+        //     watchList.getPointList().get(i).updateLastValue(new PointValueTime(Double.parseDouble(format.format(point.lastValue().getDoubleValue())), point.lastValue().getTime()));
+        // }
         // Set the watchlist in the user object after getting the data since it may take a while, and the long poll
         // updates will all be missed in the meantime.
         user.setWatchList(watchList);
@@ -271,6 +284,8 @@ public class WatchListDwr extends BaseDwr {
 
         PointValueTime pointValue = prepareBasePointState(Integer.toString(pointVO.getId()), state, pointVO, point,
                 model);
+        if(pointValue != null)
+            pointValue = new PointValueTime(Math.floor(pointValue.getDoubleValue() * 100)/100, pointValue.getTime());
         setEvents(pointVO, user, model);
         if (pointValue != null && pointValue.getValue() instanceof ImageValue) {
             // Text renderers don't help here. Create a thumbnail.

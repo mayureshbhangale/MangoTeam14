@@ -103,13 +103,13 @@ public class StatisticsChartRenderer extends TimePeriodChartRenderer {
                 AnalogStatistics stats = new AnalogStatistics(startValue, values, startTime, startTime + getDuration());
                 model.put("start", stats.getRealStart());
                 model.put("end", stats.getEnd());
-                model.put("minimum", stats.getMinimum());
+                model.put("minimum", Math.floor(stats.getMinimum() * 100)/100);
                 model.put("minTime", stats.getMinTime());
-                model.put("maximum", stats.getMaximum());
+                model.put("maximum", Math.floor(stats.getMaximum() * 100)/100);
                 model.put("maxTime", stats.getMaxTime());
-                model.put("average", stats.getAverage());
+                model.put("average", Math.floor(stats.getAverage() * 100)/100);
                 if (includeSum)
-                    model.put("sum", stats.getSum());
+                    model.put("sum", Math.floor(stats.getSum() * 100)/100);
                 model.put("count", stats.getCount());
                 model.put("noData", stats.isNoData());
             }

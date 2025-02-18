@@ -18,6 +18,7 @@
  */
 package com.serotonin.mango.web.dwr;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -57,19 +58,20 @@ public class DataPointDetailsDwr extends BaseDwr {
         HttpServletRequest request = WebContextFactory.get().getHttpServletRequest();
         User user = Common.getUser(request);
         DataPointVO pointVO = user.getEditPoint();
-
         // Create the watch list state.
         RuntimeManager rtm = Common.ctx.getRuntimeManager();
         Map<String, Object> model = new HashMap<String, Object>();
 
         // Get the data point status from the data image.
         DataPointRT pointRT = rtm.getDataPoint(pointVO.getId());
-
+        
         WatchListState state = new WatchListState();
         state.setId(Integer.toString(pointVO.getId()));
 
         PointValueTime pointValue = prepareBasePointState(Integer.toString(pointVO.getId()), state, pointVO, pointRT,
                 model);
+        if(pointValue != null)
+            pointValue = new PointValueTime(Math.floor(pointValue.getDoubleValue() * 100)/100, pointValue.getTime());
         setPrettyText(state, pointVO, model, pointValue);
         if (state.getValue() != null)
             setChange(pointVO, state, pointRT, request, model, user);
@@ -89,6 +91,9 @@ public class DataPointDetailsDwr extends BaseDwr {
         List<RenderedPointValueTime> renderedData = new ArrayList<RenderedPointValueTime>(rawData.size());
 
         for (PointValueTime pvt : rawData) {
+            // DecimalFormat format = new DecimalFormat("#.00");
+            if(pvt != null)
+                pvt = new PointValueTime(Math.floor(pvt.getDoubleValue() * 100)/100, pvt.getTime());
             RenderedPointValueTime rpvt = new RenderedPointValueTime();
             rpvt.setValue(Functions.getHtmlText(pointVO, pvt));
             rpvt.setTime(Functions.getTime(pvt));
@@ -173,6 +178,7 @@ public class DataPointDetailsDwr extends BaseDwr {
         Collections.reverse(values);
         List<ImageValueBean> result = new ArrayList<ImageValueBean>();
         for (PointValueTime pvt : values) {
+            pvt = new PointValueTime(Math.floor(pvt.getDoubleValue() * 100)/100, pvt.getTime());
             ImageValue imageValue = (ImageValue) pvt.getValue();
             String uri = ImageValueServlet.servletPath + ImageValueServlet.historyPrefix + pvt.getTime() + "_"
                     + vo.getId() + "." + imageValue.getTypeExtension();
