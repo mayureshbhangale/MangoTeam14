@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.serotonin.mango.Common;
+import com.serotonin.mango.util.EventConstants;
 import com.serotonin.mango.rt.dataImage.DataPointListener;
 import com.serotonin.mango.rt.dataImage.PointValueTime;
 import com.serotonin.mango.rt.event.SimpleEventDetector;
@@ -44,7 +45,7 @@ abstract public class PointEventDetectorRT extends SimpleEventDetector implement
     protected void raiseEvent(long time, Map<String, Object> context) {
         LocalizableMessage msg;
         if (!StringUtils.isEmpty(vo.getAlias()))
-            msg = new LocalizableMessage("common.default", vo.getAlias());
+            msg = new LocalizableMessage(EventConstants.DEFAULT_MESSAGE_KEY, vo.getAlias());
         else
             msg = getMessage();
 
