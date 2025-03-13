@@ -40,7 +40,7 @@ public class DataSourceEventType extends EventType {
     }
 
     public DataSourceEventType(int dataSourceId, int dataSourceEventTypeId) {
-        this(dataSourceId, dataSourceEventTypeId, AlarmLevels.URGENT, EventType.DuplicateHandling.IGNORE);
+        this(dataSourceId, dataSourceEventTypeId, AlarmLevels.URGENT, EventType.DuplicateHandlingConstants.IGNORE);
     }
 
     public DataSourceEventType(int dataSourceId, int dataSourceEventTypeId, int alarmLevel, int duplicateHandling) {

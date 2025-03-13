@@ -46,7 +46,7 @@ public class VMStatDataSourceVO extends DataSourceVO<VMStatDataSourceVO> {
     @Override
     protected void addEventTypes(List<EventTypeVO> ets) {
         ets.add(createEventType(VMStatDataSourceRT.DATA_SOURCE_EXCEPTION_EVENT, new LocalizableMessage(
-                "event.ds.dataSource"), EventType.DuplicateHandling.IGNORE_SAME_MESSAGE, AlarmLevels.URGENT));
+                "event.ds.dataSource"), EventType.DuplicateHandlingConstants.IGNORE_SAME_MESSAGE, AlarmLevels.URGENT));
         ets
                 .add(createEventType(VMStatDataSourceRT.PARSE_EXCEPTION_EVENT, new LocalizableMessage(
                         "event.ds.dataParse")));

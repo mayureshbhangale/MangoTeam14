@@ -125,7 +125,7 @@ public class SystemEventType extends EventType {
     //
     private int systemEventTypeId;
     private int refId2;
-    private int duplicateHandling = EventType.DuplicateHandling.ALLOW;
+    private int duplicateHandling = EventType.DuplicateHandlingConstants.ALLOW;
 
     public SystemEventType() {
         // Required for reflection.

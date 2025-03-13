@@ -280,7 +280,7 @@ public class AuditEventType extends EventType {
 
     @Override
     public int getDuplicateHandling() {
-        return DuplicateHandling.ALLOW;
+        return DuplicateHandlingConstants.ALLOW;
     }
 
     @Override

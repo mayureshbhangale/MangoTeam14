@@ -31,7 +31,7 @@ public class DataPointEventType extends EventType {
     private int dataSourceId = -1;
     private int dataPointId;
     private int pointEventDetectorId;
-    private int duplicateHandling = EventType.DuplicateHandling.IGNORE;
+    private int duplicateHandling = EventType.DuplicateHandlingConstants.IGNORE;
 
     public DataPointEventType() {
         // Required for reflection.

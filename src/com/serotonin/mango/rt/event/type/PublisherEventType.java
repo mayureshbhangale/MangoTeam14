@@ -65,7 +65,7 @@ public class PublisherEventType extends EventType {
 
     @Override
     public int getDuplicateHandling() {
-        return EventType.DuplicateHandling.IGNORE;
+        return EventType.DuplicateHandlingConstants.IGNORE;
     }
 
     @Override

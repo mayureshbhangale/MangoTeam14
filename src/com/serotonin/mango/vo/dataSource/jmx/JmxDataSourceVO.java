@@ -53,7 +53,7 @@ public class JmxDataSourceVO extends DataSourceVO<JmxDataSourceVO> {
     @Override
     protected void addEventTypes(List<EventTypeVO> ets) {
         ets.add(createEventType(JmxDataSourceRT.DATA_SOURCE_EXCEPTION_EVENT, new LocalizableMessage(
-                "event.ds.dataSource"), EventType.DuplicateHandling.IGNORE_SAME_MESSAGE, AlarmLevels.URGENT));
+                "event.ds.dataSource"), EventType.DuplicateHandlingConstants.IGNORE_SAME_MESSAGE, AlarmLevels.URGENT));
         ets.add(createEventType(JmxDataSourceRT.POINT_READ_EXCEPTION_EVENT,
                 new LocalizableMessage("event.ds.pointRead")));
         ets.add(createEventType(JmxDataSourceRT.POINT_WRITE_EXCEPTION_EVENT, new LocalizableMessage(

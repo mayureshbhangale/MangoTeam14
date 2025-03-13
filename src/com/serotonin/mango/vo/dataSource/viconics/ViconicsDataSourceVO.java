@@ -54,9 +54,9 @@ public class ViconicsDataSourceVO extends DataSourceVO<ViconicsDataSourceVO> {
                 "event.ds.initialization")));
         ets
                 .add(createEventType(ViconicsDataSourceRT.MESSAGE_EXCEPTION_EVENT, new LocalizableMessage(
-                        "event.ds.message"), EventType.DuplicateHandling.IGNORE, AlarmLevels.INFORMATION));
+                        "event.ds.message"), EventType.DuplicateHandlingConstants.IGNORE, AlarmLevels.INFORMATION));
         ets.add(createEventType(ViconicsDataSourceRT.DEVICE_OFFLINE_EVENT, new LocalizableMessage("event.ds.device"),
-                EventType.DuplicateHandling.IGNORE, AlarmLevels.INFORMATION));
+                EventType.DuplicateHandlingConstants.IGNORE, AlarmLevels.INFORMATION));
         ets
                 .add(createEventType(ViconicsDataSourceRT.NETWORK_OFFLINE_EVENT, new LocalizableMessage(
                         "event.ds.network")));

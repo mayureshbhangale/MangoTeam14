@@ -264,7 +264,7 @@ public class CompoundEventDetectorRT implements EventDetectorListener, ILifecycl
         // Create a convenience reference to the event type.
         eventType = new CompoundDetectorEventType(vo.getId());
         if (!vo.isReturnToNormal())
-            eventType.setDuplicateHandling(EventType.DuplicateHandling.ALLOW);
+            eventType.setDuplicateHandling(EventType.DuplicateHandlingConstants.ALLOW);
 
         // Evaluate the current state.
         currentState = condition.evaluate();

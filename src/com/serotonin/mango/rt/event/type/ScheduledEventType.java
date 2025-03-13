@@ -33,7 +33,7 @@ import com.serotonin.mango.db.dao.ScheduledEventDao;
 @JsonRemoteEntity
 public class ScheduledEventType extends EventType {
     private int scheduleId;
-    private int duplicateHandling = EventType.DuplicateHandling.IGNORE;
+    private int duplicateHandling = EventType.DuplicateHandlingConstants.IGNORE;
 
     public ScheduledEventType() {
         // Required for reflection.

@@ -115,7 +115,7 @@ public class VersionCheck extends TimerTask {
 
     private static SystemEventType getEventType() {
         return new SystemEventType(SystemEventType.TYPE_VERSION_CHECK, 0,
-                EventType.DuplicateHandling.IGNORE_SAME_MESSAGE);
+                EventType.DuplicateHandlingConstants.IGNORE_SAME_MESSAGE);
     }
 
     private static LocalizableMessage newVersionCheck(long fireTime, String notifLevel) throws Exception {

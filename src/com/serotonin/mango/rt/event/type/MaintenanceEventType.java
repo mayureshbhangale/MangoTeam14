@@ -34,7 +34,7 @@ public class MaintenanceEventType extends EventType {
 
     @Override
     public int getDuplicateHandling() {
-        return EventType.DuplicateHandling.IGNORE;
+        return EventType.DuplicateHandlingConstants.IGNORE;
     }
 
     @Override

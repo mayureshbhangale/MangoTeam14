@@ -50,7 +50,7 @@ public class PointLinkRT implements DataPointListener, SetPointSource {
     public PointLinkRT(PointLinkVO vo) {
         this.vo = vo;
         eventType = new SystemEventType(SystemEventType.TYPE_POINT_LINK_FAILURE, vo.getId(),
-                EventType.DuplicateHandling.IGNORE_SAME_MESSAGE);
+                EventType.DuplicateHandlingConstants.IGNORE_SAME_MESSAGE);
     }
 
     public void initialize() {

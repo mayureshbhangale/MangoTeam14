@@ -379,7 +379,7 @@ abstract public class DataSourceVO<T extends DataSourceVO<?>> implements Seriali
     }
 
     protected EventTypeVO createEventType(int eventId, LocalizableMessage message) {
-        return createEventType(eventId, message, EventType.DuplicateHandling.IGNORE, AlarmLevels.URGENT);
+        return createEventType(eventId, message, EventType.DuplicateHandlingConstants.IGNORE, AlarmLevels.URGENT);
     }
 
     protected EventTypeVO createEventType(int eventId, LocalizableMessage message, int duplicateHandling,

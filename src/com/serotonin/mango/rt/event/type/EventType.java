@@ -122,31 +122,6 @@ abstract public class EventType implements JsonSerializable {
      * 
      * @author Matthew Lohbihler
      */
-    public interface DuplicateHandling {
-        /**
-         * Duplicates are not allowed. This should be the case for all event types where there is an automatic return to
-         * normal.
-         */
-        int DO_NOT_ALLOW = 1;
-
-        /**
-         * Duplicates are ignored. This should be the case where the initial occurrence of an event is really the only
-         * thing of interest to a user. For example, the initial error in a data source is usually what is most useful
-         * in diagnosing a problem.
-         */
-        int IGNORE = 2;
-
-        /**
-         * Duplicates are ignored only if their message is the same as the existing.
-         */
-        int IGNORE_SAME_MESSAGE = 3;
-
-        /**
-         * Duplicates are allowed. The change detector uses this so that user's can acknowledge every change the point
-         * experiences.
-         */
-        int ALLOW = 4;
-    }
 
     abstract public int getEventSourceId();
 

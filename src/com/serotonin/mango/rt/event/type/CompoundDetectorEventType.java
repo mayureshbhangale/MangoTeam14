@@ -32,7 +32,7 @@ import com.serotonin.mango.db.dao.CompoundEventDetectorDao;
 @JsonRemoteEntity
 public class CompoundDetectorEventType extends EventType {
     private int compoundDetectorId;
-    private int duplicateHandling = EventType.DuplicateHandling.IGNORE;
+    private int duplicateHandling = EventType.DuplicateHandlingConstants.IGNORE;
 
     public CompoundDetectorEventType() {
         // Required for reflection.

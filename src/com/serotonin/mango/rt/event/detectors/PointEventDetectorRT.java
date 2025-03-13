@@ -37,7 +37,7 @@ abstract public class PointEventDetectorRT extends SimpleEventDetector implement
     protected EventType getEventType() {
         DataPointEventType et = new DataPointEventType(vo.njbGetDataPoint().getId(), vo.getId());
         if (!vo.isRtnApplicable())
-            et.setDuplicateHandling(EventType.DuplicateHandling.ALLOW);
+            et.setDuplicateHandling(EventType.DuplicateHandlingConstants.ALLOW);
         return et;
     }
 

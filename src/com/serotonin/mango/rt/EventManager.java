@@ -68,7 +68,7 @@ public class EventManager implements ILifecycle {
         if (dup != null) {
             // Check the duplicate handling.
             int dh = type.getDuplicateHandling();
-            if (dh == EventType.DuplicateHandling.DO_NOT_ALLOW) {
+            if (dh == EventType.DuplicateHandlingConstants.DO_NOT_ALLOW) {
                 // Create a log error...
                 log.error("An event was raised for a type that is already active: type=" + type + ", message="
                         + message.getKey());
@@ -76,11 +76,11 @@ public class EventManager implements ILifecycle {
                 return;
             }
 
-            if (dh == EventType.DuplicateHandling.IGNORE)
+            if (dh == EventType.DuplicateHandlingConstants.IGNORE)
                 // Safely return.
                 return;
 
-            if (dh == EventType.DuplicateHandling.IGNORE_SAME_MESSAGE) {
+            if (dh == EventType.DuplicateHandlingConstants.IGNORE_SAME_MESSAGE) {
                 // Ignore only if the message is the same. There may be events of this type with different messages,
                 // so look through them all for a match.
                 for (EventInstance e : getAll(type)) {

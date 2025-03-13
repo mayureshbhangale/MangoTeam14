@@ -95,7 +95,7 @@ public class ScheduledEventRT extends SimpleEventDetector implements ModelTimeou
     public void initialize() {
         eventType = new ScheduledEventType(vo.getId());
         if (!vo.isReturnToNormal())
-            eventType.setDuplicateHandling(EventType.DuplicateHandling.ALLOW);
+            eventType.setDuplicateHandling(EventType.DuplicateHandlingConstants.ALLOW);
 
         // Schedule the active event.
         TimerTrigger activeTrigger = createTrigger(true);
